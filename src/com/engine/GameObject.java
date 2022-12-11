@@ -2,6 +2,7 @@ package com.engine;
 
 import com.structure.Position;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,12 +37,19 @@ public class GameObject {
 
     public void addComponent(Component c) {
         components.add(c);
+        c.gameObject = this;
     }
 
     // aktualizowanie GameObject sprowadza się do akrualizowania jego componentów
     public void update(double dt) {
         for (Component c:components) {
             c.update(dt);
+        }
+    }
+
+    public void draw(Graphics2D g2) {
+        for (Component c:components) {
+            c.draw(g2);
         }
     }
 }
