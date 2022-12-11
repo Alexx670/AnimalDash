@@ -82,6 +82,7 @@ public class Window extends JFrame implements Runnable{
                lastFrameTime = time;
 
                update(dt);
+               System.out.println(dt);
            }
        } catch (Exception e) {
            e.printStackTrace();
