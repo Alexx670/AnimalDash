@@ -2,10 +2,10 @@ package com.structure;
 
 import com.utillity.Vector2;
 
-public class Position {
+public class Location {
     public Vector2 position;
 
-    public Position(Vector2 position) {
+    public Location(Vector2 position) {
         this.position = position;
     }
 

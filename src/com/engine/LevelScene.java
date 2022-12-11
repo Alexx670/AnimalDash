@@ -2,7 +2,7 @@ package com.engine;
 
 import com.components.Box;
 import com.structure.Assets;
-import com.structure.Position;
+import com.structure.Location;
 import com.utillity.Constants;
 import com.utillity.Vector2;
 
@@ -17,9 +17,9 @@ public class LevelScene extends Scene{
 
     @Override
     public void init() {
-        testGameObject = new GameObject("Test Game Object", new Position(new Vector2(0,0)));
+        testGameObject = new GameObject("Test Game Object", new Location(new Vector2(0,0)));
         testGameObject.addComponent(new Box("Box1"));
-        testGameObject.addComponent(Assets.getImage("assets/pic1/png"));
+        testGameObject.addComponent(Assets.getImage("assets/background.png"));
     }
 
     @Override

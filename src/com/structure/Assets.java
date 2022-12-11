@@ -19,14 +19,14 @@ public class Assets {
 
     // metoda zwracająca adres pliku o podanej nazwie
     public static Image getImage(String pictureFile) {
+        File file = new File(pictureFile);
         if (Assets.hasImage(pictureFile)) {
-            File file = new File(pictureFile);
             return Assets.images.get(file.getAbsolutePath().toString());
         } else  {
             Image image = new Image(pictureFile);
             Assets.addImage(pictureFile, image);
+            return Assets.images.get(file.getAbsolutePath());
         }
-        return null;
     }
 
     /**

@@ -32,6 +32,6 @@ public class Image extends Component {
 
     @Override
     public void draw(Graphics2D g2) {
-        //g2.drawImage(image, gameObject.position.position.x, gameObject.position.position.y, width, height, null);
+        g2.drawImage(image, (int)gameObject.location.position.x, (int)gameObject.location.position.y, width, height, null);
     }
 }

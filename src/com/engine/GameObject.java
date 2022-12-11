@@ -1,6 +1,6 @@
 package com.engine;
 
-import com.structure.Position;
+import com.structure.Location;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -10,11 +10,11 @@ import java.util.List;
 public class GameObject {
     private List<Component> components;
     private String name;
-    public  Position position;
+    public Location location;
 
-    public GameObject(String name, Position position) {
+    public GameObject(String name, Location location) {
         this.name = name;
-        this.position = position;
+        this.location = location;
         this.components = new ArrayList<>();
     }
 
