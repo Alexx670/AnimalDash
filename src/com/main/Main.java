@@ -1,7 +1,7 @@
 package com.main;
 
 
-import engine.Window;
+import com.engine.Window;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
-package engine;
+package com.engine;
 
-import utillity.Constants;
-import utillity.Time;
+import com.utillity.Constants;
+import com.utillity.Time;
 
 import javax.swing.JFrame;
 import java.awt.*;
@@ -82,7 +82,6 @@ public class Window extends JFrame implements Runnable{
                lastFrameTime = time;
 
                update(dt);
-               System.out.println(dt);
            }
        } catch (Exception e) {
            e.printStackTrace();
