@@ -12,6 +12,6 @@ public class Box extends Component {
 
     @Override
     public void update(double dt) {
-        System.out.println("Box Class");    // Testowe wyjście
+        //System.out.println("Box Class");    // Testowe wyjście
     }
 }

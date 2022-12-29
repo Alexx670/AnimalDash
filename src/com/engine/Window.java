@@ -70,6 +70,7 @@ public class Window extends JFrame implements Runnable{
     public void update(double dt) {
         currentScene.update(dt);
         draw(getGraphics());
+        System.out.println(dt);
     }
 
     @Override
