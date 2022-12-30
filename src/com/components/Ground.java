@@ -17,8 +17,9 @@ public class Ground extends Component {
         LevelScene scene = (LevelScene)(Window.getWindow().getCurrentScene());
         GameObject player = scene.player;
 
-        if ((player.location.position.y + player.getComponent(Box.class).height) > (gameObject.location.position.y + Constants.PLAYER_OVERLAP)) {
-            player.location.position.y = gameObject.location.position.y - player.getComponent(Box.class).height + Constants.PLAYER_OVERLAP;
+        if ((player.location.position.y + player.getComponent(Box.class).getHeight()) > (gameObject.location.position.y + Constants.PLAYER_OVERLAP)) {
+            player.location.position.y = gameObject.location.position.y - player.getComponent(Box.class).getHeight() + Constants.PLAYER_OVERLAP;
+            player.getComponent(Player.class).canJump = true;
         }
 
         gameObject.location.position.x = scene.camera.position.x - 10;

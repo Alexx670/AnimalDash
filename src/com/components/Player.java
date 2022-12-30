@@ -1,19 +1,34 @@
 package com.components;
 
 import com.engine.Component;
+import com.engine.Window;
 import com.utillity.Constants;
 
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 
 
 public class Player extends Component {
     Image playerImage;
-    public int width, height;
+    private int width, height;
+    public boolean canJump = true;
 
     public Player(Image playerImage) {
         this.playerImage = playerImage;
         this.width = Constants.PLAYER_WIDTH;
         this.height = Constants.PLAYER_HEIGHT;
+    }
+
+    @Override
+    public void update(double dt) {
+        if (canJump && Window.getWindow().keyListener.isKeyPressed(KeyEvent.VK_SPACE)) {
+            addJumpVelocity();
+            this.canJump = false;
+        }
+    }
+
+    private void addJumpVelocity() {
+        gameObject.getComponent(Physics.class).velocity.y = Constants.JUMP_VELOCITY;
     }
 
     @Override

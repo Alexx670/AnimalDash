@@ -6,6 +6,10 @@ import java.awt.*;
 public abstract class Component<T> {
     public GameObject gameObject;
 
+    public void start(){
+
+    }
+
     public void update(double dt) {
     }
 

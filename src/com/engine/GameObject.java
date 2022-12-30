@@ -38,6 +38,7 @@ public class GameObject {
     public void addComponent(Component c) {
         components.add(c);
         c.gameObject = this;
+        c.start();
     }
 
     // aktualizowanie GameObject sprowadza się do akrualizowania jego componentów
@@ -51,5 +52,9 @@ public class GameObject {
         for (Component c:components) {
             c.draw(g2);
         }
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -20,7 +20,7 @@ public class Assets {
     // metoda zwracająca adres pliku o podanej nazwie
     public static Image getImage(String pictureFile) {
         File file = new File(pictureFile);
-        if (Assets.hasImage(pictureFile)) {
+        if (Assets.hasImage(file.getAbsolutePath())) {
             return Assets.images.get(file.getAbsolutePath().toString());
         } else  {
             Image image = new Image(pictureFile);
@@ -41,7 +41,6 @@ public class Assets {
             Assets.images.put(file.getAbsolutePath(), image);
         } else {
             System.out.println("Assets already has asset: " + file.getAbsolutePath());
-            //System.exit(-1);
         }
     }
 }
