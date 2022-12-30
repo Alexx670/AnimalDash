@@ -4,9 +4,9 @@ import com.utillity.Vector2;
 
 public class Location {
     public Vector2 position;
-    public float scale;
+    public Vector2 scale;
 
-    public Location(Vector2 position, float scale) {
+    public Location(Vector2 position, Vector2 scale) {
         this.position = position;
         this.scale = scale;
     }

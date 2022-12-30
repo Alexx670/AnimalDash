@@ -7,7 +7,7 @@ public class Constants {
 
     public static final int PLAYER_WIDTH = 150;
     public static final int PLAYER_HEIGHT = 100;
-    public static final int PLAYER_OVERLAP = 20;
+    public static final int PLAYER_OVERLAP = 10;
 
     public static final int GROUND_Y = 500;     // 700
     public static final int CAMERA_OFFSET_X = 150;  // 300
@@ -16,5 +16,6 @@ public class Constants {
 
     public static final float GRAVITY = 2600;   // 2850
     public static final float MAX_VELOCITY = 1800;  //1900
+    public static final float X_VELOCITY = 150;
 
 }

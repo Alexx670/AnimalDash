@@ -26,6 +26,8 @@ public class Window extends JFrame implements Runnable{
 
         this.keyListener = new KListener();
         this.addKeyListener(keyListener);
+
+
     }
 
     // inicjalizacja sceny

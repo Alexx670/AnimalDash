@@ -18,9 +18,6 @@ public class Image extends Component {
 
         try {
             File file = new File(pictureFile);
-            if (Assets.hasImage(pictureFile)) {
-                throw new Exception("Asset already exists: "+pictureFile);
-            }
             this.image = ImageIO.read(file);
             this.width = image.getWidth();
             this.height = image.getHeight();
@@ -30,9 +27,20 @@ public class Image extends Component {
         }
     }
 
+    public Image(BufferedImage image, String pictureFile) {
+        this.image = image;
+        this.width = image.getWidth();
+        this.height = image.getHeight();
+        this.pictureFile = pictureFile;
+    }
+
     @Override
     public void draw(Graphics2D g2) {
         g2.drawImage(image, (int)gameObject.location.position.x, (int)gameObject.location.position.y,
-                (int)(width*(this.gameObject.location.scale)), (int)(height*(this.gameObject.location.scale)), null);
+                (int)(width*(this.gameObject.location.scale.x)), (int)(height*(this.gameObject.location.scale.y)), null);
+    }
+
+    public Image copy(){
+        return (new Image(this.image, this.pictureFile));
     }
 }
