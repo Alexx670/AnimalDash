@@ -41,7 +41,7 @@ public class Assets {
             Assets.images.put(file.getAbsolutePath(), image);
         } else {
             System.out.println("Assets already has asset: " + file.getAbsolutePath());
-            System.exit(-1);
+            //System.exit(-1);
         }
     }
 }

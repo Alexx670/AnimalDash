@@ -8,7 +8,7 @@ import java.util.List;
 
 public abstract class Scene {
     String name;
-    Camera camera;
+    public Camera camera;
     List<GameObject> gameObjectList;
     Rendering rendering;
 
@@ -17,7 +17,11 @@ public abstract class Scene {
         this.camera = new Camera(new Vector2(0,0));
         this.gameObjectList = new ArrayList<>();
         this.rendering = new Rendering(this.camera);
-        init();
+    }
+
+    public void addGameObject(GameObject g) {
+        gameObjectList.add(g);
+        rendering.send(g);
     }
 
     public void init() { }

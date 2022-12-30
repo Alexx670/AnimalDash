@@ -33,11 +33,20 @@ public class Window extends JFrame implements Runnable{
         changeScene(0);
     }
 
+    public Scene getCurrentScene() {
+        return currentScene;
+    }
+
     // funkcja realizująca zmianę scen
     public void changeScene(int scene) {
         switch (scene) {
             case 0:
-                currentScene = new LevelScene("Level");
+                currentScene = new LevelScene("Level 1 Scene");
+                currentScene.init();
+                break;
+            case 1:
+                currentScene = new LevelScene("Level 2 Scene");
+                currentScene.init();
                 break;
             default:
                 System.out.println("Brak sceny");
