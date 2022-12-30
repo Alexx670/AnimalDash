@@ -4,7 +4,7 @@ import com.engine.Component;
 import com.structure.Assets;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -32,6 +32,7 @@ public class Image extends Component {
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.drawImage(image, (int)gameObject.location.position.x, (int)gameObject.location.position.y, width, height, null);
+        g2.drawImage(image, (int)gameObject.location.position.x, (int)gameObject.location.position.y,
+                (int)(width*(this.gameObject.location.scale)), (int)(height*(this.gameObject.location.scale)), null);
     }
 }

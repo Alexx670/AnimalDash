@@ -2,6 +2,7 @@ package com.engine;
 
 import com.components.Box;
 import com.components.Ground;
+import com.components.Image;
 import com.components.Physics;
 import com.components.Player;
 import com.structure.Assets;
@@ -20,22 +21,31 @@ public class LevelScene extends Scene{
 
     @Override
     public void init() {
-        player = new GameObject("Player", new Location(new Vector2(100,400)));
-        //testGameObject.addComponent(new Box("Box1"));
-        //testGameObject.addComponent(Assets.getImage("assets/background.png"));
+        // gracz
+        player = new GameObject("Player", new Location(new Vector2(100,200), 1.0f));
         Player playerComp = new Player(Assets.getImage("assets/krowcia3.png"));
         player.addComponent(playerComp);
         player.addComponent(new Physics(new Vector2(250, 0)));  // 395
         player.addComponent(new Box(Constants.PLAYER_WIDTH, Constants.PLAYER_HEIGHT));
         gameObjectList.add(player);
 
+        // podłoże
         GameObject ground;
-        ground = new GameObject("Ground", new Location(new Vector2(0, Constants.GROUND_Y)));
+        ground = new GameObject("Ground", new Location(new Vector2(0, Constants.GROUND_Y), 1.0f));
         ground.addComponent(new Ground());
+        ground.addComponent(new Image("assets/ground2.png"));
         gameObjectList.add(ground);
+
+        // testowa platforma
+        GameObject platform;
+        platform = new GameObject("Platform1", new Location(new Vector2(1000, 250), 0.3f));
+        //platform.location.scale = 0.1f;
+        platform.addComponent(new Image("assets/ground2.png"));
+        gameObjectList.add(platform);
 
         addGameObject(player);
         addGameObject(ground);
+        addGameObject(platform);
     }
 
     @Override

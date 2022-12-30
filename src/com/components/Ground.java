@@ -17,8 +17,8 @@ public class Ground extends Component {
         LevelScene scene = (LevelScene)(Window.getWindow().getCurrentScene());
         GameObject player = scene.player;
 
-        if ((player.location.position.y + player.getComponent(Box.class).height) > (gameObject.location.position.y + 13)) {
-            player.location.position.y = gameObject.location.position.y - player.getComponent(Box.class).height + 13;
+        if ((player.location.position.y + player.getComponent(Box.class).height) > (gameObject.location.position.y + Constants.PLAYER_OVERLAP)) {
+            player.location.position.y = gameObject.location.position.y - player.getComponent(Box.class).height + Constants.PLAYER_OVERLAP;
         }
 
         gameObject.location.position.x = scene.camera.position.x - 10;
@@ -26,9 +26,9 @@ public class Ground extends Component {
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.setColor(Color.GREEN);
+        //g2.setColor(Color.GREEN);
 
-        g2.drawRect((int)gameObject.location.position.x - 10, (int)gameObject.location.position.y + 10,
-                Constants.SCREEN_WIDTH+20, Constants.SCREEN_HEIGHT+20);
+        //g2.drawRect((int)gameObject.location.position.x - 10, (int)gameObject.location.position.y + 10,
+                //Constants.SCREEN_WIDTH+20, Constants.SCREEN_HEIGHT+20);
     }
 }
