@@ -22,10 +22,17 @@ public class Rendering {
 
     public void render(Graphics2D g2){
         for (GameObject g : gameObjectList) {
-            Location oldLocation = new Location(g.location.position, g.location.scale);
-            g.location.position = new Vector2(g.location.position.x - camera.position.x, g.location.position.y - camera.position.y);
-            g.draw(g2);
-            g.location = oldLocation;
+            if (g.isUI) {
+                // jeśli dany game object jest ui - render nie będzie zmieniał jest lokalizacji
+                g.draw(g2);
+            }
+            else {
+                // wszystkie inne game objecty będą renderowane
+                Location oldLocation = new Location(g.location.position, g.location.scale);
+                g.location.position = new Vector2(g.location.position.x - camera.position.x, g.location.position.y - camera.position.y);
+                g.draw(g2);
+                g.location = oldLocation;
+            }
         }
     }
 }

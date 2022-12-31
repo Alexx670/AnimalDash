@@ -11,7 +11,7 @@ public class Constants {
 
     public static final int GROUND_Y = 500;     // 700
     public static final int CAMERA_OFFSET_X = 150;  // 300
-    public static final int CAMERA_OFFSET_Y = 400;  //325
+    public static final int CAMERA_OFFSET_Y = 450;  //325
     public static final int CAMERA_OFFSET_GROUND_Y = 150;   // 150
 
     public static final float GRAVITY = 2000;   // 2850

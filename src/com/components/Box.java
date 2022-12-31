@@ -2,6 +2,7 @@ package com.components;
 
 import com.engine.Component;
 import com.engine.GameObject;
+import com.utillity.Constants;
 import com.utillity.Vector2;
 
 public class Box extends Component {
@@ -71,7 +72,7 @@ public class Box extends Component {
         return (Math.abs(dx) <= addedHalfWidths) && (Math.abs(dy) <= addedHalfHeights);
     }
 
-    public void handleCollision(GameObject player) {
+    public void handleCollision(GameObject player, GameObject[] backgrounds, GameObject[] grounds, int backgroundNr, double dt) {
         // jeśli gracz nie może przeniknąć przez ten Box
         if (!this.transparent) {
             Box playerBox = player.getComponent(Box.class);
@@ -106,7 +107,15 @@ public class Box extends Component {
                 }
             }
             else {      // kolizja pozioma
-                player.location.position.x = player.location.position.x - Math.abs(overlapX);
+                player.location.position.x = player.location.position.x - overlapX;
+
+                // wstrzymaj tło na chwilę kolizji poziomej
+                for (int i = 0; i < backgroundNr; i++) {
+                    backgrounds[i].location.position.x = backgrounds[i].location.position.x -
+                            (float)(backgrounds[i].getComponent(MovingBackground.class).getSpeed()*dt);
+                    grounds[i].location.position.x = grounds[i].location.position.x -
+                            (float)(grounds[i].getComponent(MovingBackground.class).getSpeed()*dt);
+                }
             }
 
 

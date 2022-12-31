@@ -11,6 +11,7 @@ public class GameObject {
     private List<Component> components;
     private String name;
     public Location location;
+    public boolean isUI;
 
     public GameObject(String name, Location location) {
         this.name = name;
@@ -52,6 +53,10 @@ public class GameObject {
         for (Component c:components) {
             c.draw(g2);
         }
+    }
+
+    public void setUI(boolean isUI) {
+        this.isUI = isUI;
     }
 
     public String getName() {

@@ -3,7 +3,7 @@ package com.engine;
 import com.utillity.Constants;
 import com.utillity.Time;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.*;
 
 public class Window extends JFrame implements Runnable{
@@ -32,7 +32,7 @@ public class Window extends JFrame implements Runnable{
 
     // inicjalizacja sceny
     public void init() {
-        changeScene(0);
+        changeScene(1);
     }
 
     public Scene getCurrentScene() {
@@ -42,11 +42,11 @@ public class Window extends JFrame implements Runnable{
     // funkcja realizująca zmianę scen
     public void changeScene(int scene) {
         switch (scene) {
-            case 0:
+            case 1:
                 currentScene = new LevelScene("Level 1 Scene");
                 currentScene.init();
                 break;
-            case 1:
+            case 2:
                 currentScene = new LevelScene("Level 2 Scene");
                 currentScene.init();
                 break;
