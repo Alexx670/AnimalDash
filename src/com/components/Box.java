@@ -13,6 +13,8 @@ public class Box extends Component {
     private float halfHeight;
     private Vector2 center;
     private boolean transparent;    // czy gracz może przenikać przez ten Box
+    private boolean collided;       // czy gracz miał kolizję z tym przedmiotem (tylko jeśli transparent == true)
+    private boolean goodProp;   // czy przedmiot funkcyjny (jeśli Box nim jest) jest prawidłową odpowiedzią
 
     public Box(float width, float height) {
         this.width = width;
@@ -21,6 +23,8 @@ public class Box extends Component {
         this.halfHeight = height / 2.0f;
         this.center = new Vector2();
         this.transparent = false;
+        this.collided = false;
+        this.goodProp = false;
     }
 
     @Override
@@ -44,6 +48,12 @@ public class Box extends Component {
     public float getWidth() { return width; }
 
     public float getHeight() { return height; }
+
+    public void setTransparent(boolean trans) { this.transparent = trans; }
+
+    public boolean getCollided() { return this.collided; }
+
+    public void setGoodProp(boolean good) { this.goodProp = good; }
 
     /**
      * Metoda sprawdzająca, czy dochodzi do kolizji między dwoma obiektami.
@@ -119,6 +129,10 @@ public class Box extends Component {
             }
 
 
+        }
+        else {
+            // kolizja z przedmiotem funkcyjnym (zwiększa wynik)
+            this.collided = this.goodProp;
         }
     }
 }
