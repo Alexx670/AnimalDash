@@ -31,5 +31,9 @@ public class Constants {
 
     public static final int SCORE_OFFSET_X = 1100;
     public static final int SCORE_OFFSET_Y = 50;
+    public static final int LEVEL_OFFSET_X = 40;
+    public static final int LEVEL_OFFSET_Y = 50;
+    public static final int MENU_OFFSET_X = 1100;
+    public static final int MENU_OFFSET_Y = 650;
 
 }

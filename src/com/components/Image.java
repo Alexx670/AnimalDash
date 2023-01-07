@@ -1,17 +1,19 @@
 package com.components;
 
 import com.engine.Component;
-import com.structure.Assets;
 
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+/**
+ * Klasa przechowująca obraz, który może być dołączony do dowolnego obiektu gry (Game Object), wraz z jego parametrami i ścieżką do niego
+ */
 public class Image extends Component {
-    public String pictureFile;
-    public int width, height;
-    public BufferedImage image;
+    public String pictureFile;  // ścieżka do obrazu
+    public int width, height;   // szerokość i wysokość obrazu
+    public BufferedImage image;     // plik z obrazem
 
     public Image (String pictureFile) {
         this.pictureFile = pictureFile;

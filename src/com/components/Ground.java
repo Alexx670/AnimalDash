@@ -7,29 +7,38 @@ import com.engine.Window;
 import com.utillity.Constants;
 
 import java.awt.Graphics2D;
-import java.awt.Color;
 
-
+/**
+ * Klasa reprezentująca podłoże, po którym porusza się gracz
+ */
 public class Ground extends Component {
 
+    /**
+     * Klasa odświeżająca parametry podłoża
+     * @param dt czas, który upłynął między kolejnymi wywołaniami metody
+     */
     @Override
     public void update(double dt) {
+        // pomocne pola, skracają dalsze zapisy
         LevelScene scene = (LevelScene)(Window.getWindow().getCurrentScene());
         GameObject player = scene.player;
 
-        if ((player.location.position.y + player.getComponent(Box.class).getHeight()) > (gameObject.location.position.y + Constants.PLAYER_OVERLAP)) {
+        // jeśli gracz ląduje na podłożu
+        if ((player.location.position.y + player.getComponent(Box.class).getHeight()) >
+                (gameObject.location.position.y + Constants.PLAYER_OVERLAP)) {
+            // gracz nie spada niżej niż górna granica posłoża
             player.location.position.y = gameObject.location.position.y - player.getComponent(Box.class).getHeight() + Constants.PLAYER_OVERLAP;
+            // gracz może skakać
             player.getComponent(Player.class).canJump = true;
         }
-
-        gameObject.location.position.x = scene.camera.position.x - 10;
     }
 
+    /**
+     * Metoda rysowania zrealizowana jedynie z konieczności jej zadeklarowania wynikającej z konstrukcji klasy Component
+     * @param g2 grafika 2-wymiarowa
+     */
     @Override
     public void draw(Graphics2D g2) {
-        //g2.setColor(Color.GREEN);
 
-        //g2.drawRect((int)gameObject.location.position.x - 10, (int)gameObject.location.position.y + 10,
-                //Constants.SCREEN_WIDTH+20, Constants.SCREEN_HEIGHT+20);
     }
 }

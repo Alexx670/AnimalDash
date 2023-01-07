@@ -11,6 +11,7 @@ public class Window extends JFrame implements Runnable{
     private static Window window = null;
     private boolean isRunning = true;
     public KListener keyListener;
+    public MListener mouseListener;
     private Scene currentScene = null;
     private Image dBuffImage = null;
     private Graphics dBuffGraphics = null;
@@ -26,13 +27,15 @@ public class Window extends JFrame implements Runnable{
 
         this.keyListener = new KListener();
         this.addKeyListener(keyListener);
-
+        this.mouseListener = new MListener();
+        this.addMouseListener(mouseListener);
+        this.addMouseMotionListener(mouseListener);
 
     }
 
     // inicjalizacja sceny
     public void init() {
-        changeScene(1);
+        changeScene(0);
     }
 
     public Scene getCurrentScene() {
@@ -42,12 +45,16 @@ public class Window extends JFrame implements Runnable{
     // funkcja realizująca zmianę scen
     public void changeScene(int scene) {
         switch (scene) {
+            case 0:
+                currentScene = new StartScene("Start Menu");
+                currentScene.init();
+                break;
             case 1:
-                currentScene = new LevelScene("Level 1 Scene");
+                currentScene = new LevelScene("Level 1 Scene", 1);
                 currentScene.init();
                 break;
             case 2:
-                currentScene = new LevelScene("Level 2 Scene");
+                currentScene = new LevelScene("Level 2 Scene", 2);
                 currentScene.init();
                 break;
             default:

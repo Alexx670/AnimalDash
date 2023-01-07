@@ -23,7 +23,7 @@ public class Rendering {
     public void render(Graphics2D g2){
         for (GameObject g : gameObjectList) {
             if (g.isUI) {
-                // jeśli dany game object jest ui - render nie będzie zmieniał jest lokalizacji
+                // jeśli dany game object jest ui - render nie będzie zmieniał jego lokalizacji
                 g.draw(g2);
             }
             else {

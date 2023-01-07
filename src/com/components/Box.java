@@ -2,9 +2,11 @@ package com.components;
 
 import com.engine.Component;
 import com.engine.GameObject;
-import com.utillity.Constants;
 import com.utillity.Vector2;
 
+/**
+ * Klasa odpowiedzialna za granice mogących zderzać się obiektów oraz zajmująca ich rozwiązywaniem
+ */
 public class Box extends Component {
 
     private float width;
@@ -13,9 +15,14 @@ public class Box extends Component {
     private float halfHeight;
     private Vector2 center;
     private boolean transparent;    // czy gracz może przenikać przez ten Box
-    private boolean collided;       // czy gracz miał kolizję z tym przedmiotem (tylko jeśli transparent == true)
+    private boolean collided;       // czy gracz miał kolizję z tym przedmiotem (tylko jeśli transparent == true oraz goodProp == true)
     private boolean goodProp;   // czy przedmiot funkcyjny (jeśli Box nim jest) jest prawidłową odpowiedzią
 
+    /**
+     * Konstruktor parametryczny klasy Box
+     * @param width szerokość pola obiektu
+     * @param height wysokość pola obiektu
+     */
     public Box(float width, float height) {
         this.width = width;
         this.height = height;
@@ -27,11 +34,18 @@ public class Box extends Component {
         this.goodProp = false;
     }
 
+    /**
+     * Metoda inicjalizująca początkowe wartości środka boxa
+     */
     @Override
     public void start() {
         this.calculateCenter();
     }
 
+    /**
+     * Metoda zrealizowana z powodu konieczności jej zawarcia wynikającej z konstrukcji klasy nadrzędnej Component
+     * @param dt czas między kolejnymi wywołaniami metody
+     */
     @Override
     public void update(double dt) {
 
@@ -45,14 +59,34 @@ public class Box extends Component {
         this.center.y = this.gameObject.location.position.y + this.halfHeight;
     }
 
+    /**
+     * Metoda umożliwiająca uzyskanie wartości szerokości boxa
+     * @return szerokość boxa
+     */
     public float getWidth() { return width; }
 
+    /**
+     * Metoda umożliwiająca uzyskanie wartości boxa boxa
+     * @return wysokość boxa
+     */
     public float getHeight() { return height; }
 
+    /**
+     * Metoda ustawiająca box jako niewidoczny dla gracza, gracz może przez niego przechodzić
+     * @param trans wartość logiczna przypisywana to pola transparent
+     */
     public void setTransparent(boolean trans) { this.transparent = trans; }
 
+    /**
+     * Metoda zwracająca, czy przedmiot przezroczysty dla gracza (transparent) doznał zderzenia z graczem
+     * @return wartość logiczna - czy doszło do kolizji gracz-przedmiot
+     */
     public boolean getCollided() { return this.collided; }
 
+    /**
+     * Metoda ustawiająca przedmiot jako będący dobrą odpowiedzią na pytanie
+     * @param good wartość logiczna opisująca, czy dany przedmiot jest właściwą odpowiedzią na pytanie
+     */
     public void setGoodProp(boolean good) { this.goodProp = good; }
 
     /**
@@ -91,14 +125,17 @@ public class Box extends Component {
             this.calculateCenter();
             playerBox.calculateCenter();
 
-            float dx, dy;   // odległości między środkami b1 i b2 na osiach x i y
+            // odległości między środkami b1 i b2 na osiach x i y
+            float dx, dy;
             dx = this.center.x - playerBox.center.x;
             dy = this.center.y - playerBox.center.y;
 
-            float addedHalfWidths, addedHalfHeights;    // dodane do siebie połowy szerokości i długości b1 i b2
+            // dodane do siebie połowy szerokości i długości b1 i b2
+            float addedHalfWidths, addedHalfHeights;
             addedHalfWidths = playerBox.halfWidth + this.halfWidth;
             addedHalfHeights = playerBox.halfHeight + this.halfHeight;
 
+            // obliczenie jak bardzo kolidujące obiekty zachodzą na siebie
             float overlapX, overlapY;
             overlapX = addedHalfWidths - Math.abs(dx);
             overlapY = addedHalfHeights - Math.abs(dy);
