@@ -2,18 +2,19 @@ package com.components;
 
 import com.engine.Component;
 import com.engine.GameObject;
+import com.utillity.Constants;
 import com.utillity.Vector2;
 
 /**
- * Klasa odpowiedzialna za granice mogących zderzać się obiektów oraz zajmująca ich rozwiązywaniem
+ * Klasa odpowiedzialna za granice mogących zderzać się obiektów oraz zajmująca rozwiązywaniem ich kolizji.
  */
 public class Box extends Component {
 
-    private float width;
-    private float height;
-    private float halfWidth;
-    private float halfHeight;
-    private Vector2 center;
+    private float width;    // szerokość pola obiektu gry (GameObject)
+    private float height;   // wysokość pola obiektu
+    private float halfWidth;    // połowa szerokośći pola obiektu
+    private float halfHeight;   // połowa wysokości pola obiektu
+    private Vector2 center;     // srodek obiektu
     private boolean transparent;    // czy gracz może przenikać przez ten Box
     private boolean collided;       // czy gracz miał kolizję z tym przedmiotem (tylko jeśli transparent == true oraz goodProp == true)
     private boolean goodProp;   // czy przedmiot funkcyjny (jeśli Box nim jest) jest prawidłową odpowiedzią
@@ -40,15 +41,6 @@ public class Box extends Component {
     @Override
     public void start() {
         this.calculateCenter();
-    }
-
-    /**
-     * Metoda zrealizowana z powodu konieczności jej zawarcia wynikającej z konstrukcji klasy nadrzędnej Component
-     * @param dt czas między kolejnymi wywołaniami metody
-     */
-    @Override
-    public void update(double dt) {
-
     }
 
     /**
@@ -154,7 +146,7 @@ public class Box extends Component {
                 }
             }
             else {      // kolizja pozioma
-                player.location.position.x = player.location.position.x - overlapX;
+                player.location.position.x = player.location.position.x - (int)(Constants.X_VELOCITY*dt);
 
                 // wstrzymaj tło na chwilę kolizji poziomej
                 for (int i = 0; i < backgroundNr; i++) {

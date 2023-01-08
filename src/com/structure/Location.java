@@ -11,8 +11,4 @@ public class Location {
         this.scale = scale;
     }
 
-    @Override
-    public String toString(){
-        return "Position: ("+position.x+", "+position.y+")";
-    }
 }

@@ -6,11 +6,12 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-// klasa zawierająca zasoby gry
+/**
+ * Klasa do zarządzania zasobami gry
+ */
 public class Assets {
     // hashmapa zawierająca nazwy obrazów oraz pliki, w których są zapisane
     static Map<String, Image> images = new HashMap<>();
-
 
     // czy w zasobach znajduje się plik o takiej nazwie
     public static boolean hasImage(String pictureFile) {
@@ -30,9 +31,9 @@ public class Assets {
     }
 
     /**
-     *
-     * @param pictureFile Absolute path to the picture
-     * @param image
+     *  Metoda służąca do dodawania nowych obrazów do zasobów gry
+     * @param pictureFile ścieżka do pliku z obrazem
+     * @param image obraz skojarzony ze ścieżką do pliky
      */
 
     public static void addImage(String pictureFile, Image image) {

@@ -40,8 +40,8 @@ public class Score extends Component {
                 Constants.TEXT_WIDTH, Constants.TEXT_HEIGHT, null);
         // narysuj cyfrę odpowiadającą wynikowi
         Image nrDrawn = scoresTable[score];
-        g2.drawImage(nrDrawn.image,  (int)this.gameObject.location.position.x + Constants.TEXT_WIDTH - 20,
-                (int)this.gameObject.location.position.y, Constants.NUMBER_WIDTH, Constants.NUMBER_HEIGHT, null);
+        g2.drawImage(nrDrawn.image,  (int)this.gameObject.location.position.x + Constants.NUMBER_OFFSET_X,
+                (int)this.gameObject.location.position.y, Constants.TEXT_WIDTH, Constants.TEXT_HEIGHT, null);
     }
 
 }

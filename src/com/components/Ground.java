@@ -32,13 +32,4 @@ public class Ground extends Component {
             player.getComponent(Player.class).canJump = true;
         }
     }
-
-    /**
-     * Metoda rysowania zrealizowana jedynie z konieczności jej zadeklarowania wynikającej z konstrukcji klasy Component
-     * @param g2 grafika 2-wymiarowa
-     */
-    @Override
-    public void draw(Graphics2D g2) {
-
-    }
 }

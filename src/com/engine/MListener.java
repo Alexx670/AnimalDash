@@ -29,6 +29,10 @@ public class MListener extends MouseAdapter {
         return this.mouseButton;
     }
 
+    public void setMouseButton(boolean pressed) {
+        this.mouseButton = pressed;
+    }
+
     @Override
     public void mouseMoved(MouseEvent e) {
         //this.deltaMousePosition = new Vector2((e.getX() - mousePosition.x), (e.getY() - mousePosition.y));
@@ -46,5 +50,6 @@ public class MListener extends MouseAdapter {
     public void mouseReleased(MouseEvent e) {
         if (SwingUtilities.isLeftMouseButton(e)) {
             this.mouseButton = false;
-        }    }
+        }
+    }
 }
