@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 
 /**
  * Klasa reprezentująca podłoże, po którym porusza się gracz
+ * Dziedziczy po klasie Component
  */
 public class Ground extends Component {
 

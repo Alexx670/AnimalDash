@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 
 /**
  * Klasa służąca do wyświetlania aktualnego poziomu gry.
+ * Dziedziczy po klasie Component
  */
 public class Level extends Component {
     private int currentLevel;   // zmienna przechowująca aktualny poziom gry

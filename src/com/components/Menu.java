@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 
 /**
  * Klasa służąca do wyświetlania napisu "Menu".
+ * Dziedziczy po klasie Component
  */
 public class Menu extends Component {
     Image text; // wyświetlany tekst

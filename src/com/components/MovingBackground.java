@@ -8,6 +8,10 @@ import com.utillity.Constants;
 
 import java.awt.*;
 
+/**
+ * Klasa odpowiedzialna za realizację ruchu tła i podłoża.
+ * Dziedziczy po klasie Component
+ */
 public class MovingBackground extends Component {
     private Image backgroundImage;  // rysunek tła
     public int width, height;       // rozmiar rysunku tła
@@ -19,6 +23,13 @@ public class MovingBackground extends Component {
     private Ground ground;  // referencja do komponentu podłoża
     private boolean isGround;   // czy jest ruchomym podłożem
 
+    /**
+     * Konstruktor parametryczny klasy MovingBackground
+     * @param file ścieżka do pliku z grafiką
+     * @param backgroundTable tabela z tłami
+     * @param ground podłoże
+     * @param isGround czy jest podłożem
+     */
     public MovingBackground(String file, GameObject[] backgroundTable, Ground ground, boolean isGround) {
         this.backgroundImage = Assets.getImage(file).copy();
         this.width = this.backgroundImage.width;
@@ -26,14 +37,19 @@ public class MovingBackground extends Component {
         this.backgroundTable = backgroundTable;
         this.ground = ground;
         this.timeStep = 0;
-        this.speed = 70.0f;
+        this.speed = 70.0f; // jeśli jest tłem to porusza się znacznie wolniej niż gracz
         this.isGround = isGround;
 
+        // jeśli jest podłożem porusza się nieznacznie wolniej niż gracz
         if (isGround) {
             this.speed = Constants.X_VELOCITY - 30;
         }
     }
 
+    /**
+     * Metoda odpowiedzialna za aktualizację parametrów ruchomego tła/podłoża
+     * @param dt odstęp czasu między wywołaniami funkcji
+     */
     @Override
     public void update(double dt) {
         this.timeStep += 1;     // zliczanie kroków
@@ -70,6 +86,10 @@ public class MovingBackground extends Component {
         }
     }
 
+    /**
+     * Metoda odpowiedzialna za rysowanie ruchomego tła/podłoża
+     * @param g2 grafika okna gry
+     */
     @Override
     public void draw(Graphics2D g2) {
         // jeśli rysuje podłoże
@@ -94,6 +114,10 @@ public class MovingBackground extends Component {
         }
     }
 
+    /**
+     * Dostęp do szybkości ruchu tła/podłoża
+     * @return szybkość ruchu tła/podłoża
+     */
     public float getSpeed() {
         return this.speed;
     }

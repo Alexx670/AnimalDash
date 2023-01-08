@@ -4,17 +4,28 @@ import com.engine.Component;
 import com.utillity.Constants;
 import com.utillity.Vector2;
 
-import java.util.Map;
-
+/**
+ * Klasa odpowiedzialna za realizację fizyki gry (grawitacji i  szybkości)
+ * Dziedziczy po klasie Component.
+ */
 public class Physics extends Component {
-    public Vector2 velocity;
+    public Vector2 velocity;    // prędkość obiektu gry
 
+    /**
+     * Konstruktor parametryczny klasy Physics
+     * @param velocity prędkość obiektu gry
+     */
     public Physics (Vector2 velocity) {
         this.velocity = velocity;
     }
 
+    /**
+     * Metoda odpowiedzialna za aktualizację stanu prędkości obiekutu
+     * @param dt odstęp czasu między wywołaniami funkcji
+     */
     @Override
     public void update(double dt) {
+        // pozycja obiektu zmienia się zgodnie z jego prędkością i czasem, który upłynął między wywołaniami funkcji
         gameObject.location.position.x += velocity.x * dt;
         gameObject.location.position.y += velocity.y * dt;
 

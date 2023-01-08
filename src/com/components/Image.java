@@ -9,6 +9,7 @@ import java.io.File;
 
 /**
  * Klasa przechowująca obraz, który może być dołączony do dowolnego obiektu gry (Game Object), wraz z jego parametrami i ścieżką do niego
+ * Dziedziczy po klasie Component
  */
 public class Image extends Component {
     public String pictureFile;  // ścieżka do obrazu

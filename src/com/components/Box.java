@@ -7,6 +7,7 @@ import com.utillity.Vector2;
 
 /**
  * Klasa odpowiedzialna za granice mogących zderzać się obiektów oraz zajmująca rozwiązywaniem ich kolizji.
+ * Dziedziczy po klasie Component
  */
 public class Box extends Component {
 
