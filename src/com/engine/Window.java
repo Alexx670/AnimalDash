@@ -6,6 +6,11 @@ import com.utillity.Time;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Klasa reprezentująca okno gry.
+ * Dziedziczy po klasie JFrame.
+ * Implementuje Runnable.
+ */
 public class Window extends JFrame implements Runnable{
 
     private static Window window = null;    // referencja do okna
@@ -18,7 +23,9 @@ public class Window extends JFrame implements Runnable{
     public int[] scores;    // tabela zapamiętanych wyników
     public int currentLevel;    // aktualny poziom
 
-    // konstruktor okna graficznego
+    /**
+     * Konstruktor okna graficznego.
+     */
     public Window() {
         // wygląd i parametry okna
         this.setSize(Constants.SCREEN_WIDTH,Constants.SCREEN_HEIGHT);
@@ -59,7 +66,8 @@ public class Window extends JFrame implements Runnable{
     }
 
     /**
-     *  funkcja realizująca zmianę scen
+     * Metoda realizująca zmianę scen.
+     * Tworzy nową scenę danego typu i ją inicjalizuje.
      * @param scene scena, na którą chcemy zmienić aktualną scenę
      */
     public void changeScene(int scene) {
@@ -98,7 +106,7 @@ public class Window extends JFrame implements Runnable{
     }
 
     /**
-     * Funkcja rysująca obraz okna
+     * Metoda rysująca obraz okna.
      * @param g grafika okna
      */
     public void draw (Graphics g){
@@ -111,7 +119,7 @@ public class Window extends JFrame implements Runnable{
     }
 
     /**
-     * Funkcja renderująca drafikę okna
+     * Metoda renderująca drafikę okna.
      * @param g grafika okna
      */
     public void render (Graphics g) {
@@ -120,7 +128,7 @@ public class Window extends JFrame implements Runnable{
     }
 
     /**
-     * Dostęp do okna gry
+     * Metoda realizująca dostęp do okna gry.
      * @return okno gry
      */
     public static Window getWindow(){
@@ -132,7 +140,7 @@ public class Window extends JFrame implements Runnable{
     }
 
     /**
-     * Funkcja aktualizująca stan rysowanych grafik
+     * Metoda aktualizująca stan rysowanych grafik.
      * @param dt
      */
     public void update(double dt) {
@@ -141,17 +149,17 @@ public class Window extends JFrame implements Runnable{
     }
 
     /**
-     * Główna pętla gry
+     * Główna pętla gry.
      */
     @Override
     public void run() {
-       double lastFrameTime = 0.0;
+       double lastFrameTime = 0.0;  // moment, w którym przetworzono ostatnią klatkę
        try {
            while (isRunning){
                // zliczanie czasu między klatkami (do zachowania zależności czasowych)
-               double time = Time.getTime();
-               double dt = time - lastFrameTime;
-               lastFrameTime = time;
+               double time = Time.getTime();    // aktualny czas
+               double dt = time - lastFrameTime;    // czas, jaki upłynął między wywołaniami metody
+               lastFrameTime = time;    // przypisanie wartości aktualnego czasu do wykorzystania jako poprzedni w kolejnym przebiegu pętli
 
                // aktualizacja parametrów rysowanych obiektów
                update(dt);

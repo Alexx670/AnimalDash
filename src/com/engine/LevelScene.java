@@ -11,7 +11,8 @@ import com.utillity.Vector2;
 import java.awt.*;
 
 /**
- * Klasa odpowiadająca za generację i obsługę poziomów gry
+ * Klasa odpowiadająca za generację i obsługę poziomów gry.
+ * Dziedziczy po klasie Scene.
  */
 public class LevelScene extends Scene{
     // wartości dostępne publicznie jako pola klasy ze względu na ich częste wykorzystanie
@@ -65,7 +66,7 @@ public class LevelScene extends Scene{
     GameObject[] groundTable = new GameObject[backgroundNumber];    // tabela z podłożami
 
     /**
-     * Konstruktor klasy LevelScene
+     * Konstruktor parametryczny klasy LevelScene
      * @param name nazwa instancji klasy
      * @param level numer generowanego poziomu
      */
@@ -84,7 +85,7 @@ public class LevelScene extends Scene{
     }
 
     /**
-     * metoda inicjalizująca warunki początkowe klasy, jest odpowiedzialna za inicjalizację zasobów i obiektów gry
+     * Metoda inicjalizująca warunki początkowe klasy, jest odpowiedzialna za inicjalizację zasobów i obiektów gry
      */
     @Override
     public void init() {
@@ -286,11 +287,10 @@ public class LevelScene extends Scene{
     }
 
     /**
-     * Metoda wybierająca poziom do generacji
+     * Metoda wybierająca poziom do generacji.
      * @param levelNumber   numer generowanego poziomu
      */
     public void generateLevel (int levelNumber) {
-
         if (levelNumber == 1) {
             // generuj poziom 1
             generateLevelOne();

@@ -1,21 +1,26 @@
 package com.utillity;
 
-import com.components.Image;
-
+/**
+ * Klasa przechowująca stałe programu.
+ */
 public class Constants {
+    // stałe dotyczące okna
     public static final int SCREEN_WIDTH = 1280;
     public static final int SCREEN_HEIGHT = 720;
     public static final String SCREEN_TITLE = "Animal Dash";
 
+    // stałe dotyczące gracza
     public static final int PLAYER_WIDTH = 150;
     public static final int PLAYER_HEIGHT = 100;
     public static final int PLAYER_OVERLAP = 0;
 
+    // stałe dotyczące kamery
     public static final int GROUND_Y = 500;     // 700
     public static final int CAMERA_OFFSET_X = 250;  // 300
     public static final int CAMERA_OFFSET_Y = 450;  //325
     public static final int CAMERA_OFFSET_GROUND_Y = 150;   // 150
 
+    // stałe dotyczące fizyki
     public static final float GRAVITY = 2000;   // 2850
     public static final float MAX_VELOCITY = 1800;  //1900
     public static final float X_VELOCITY = 290;
@@ -30,6 +35,7 @@ public class Constants {
     public static final int PROP_DIMENSION = 80;
     public static final float PROP_SCALE = (float)(80.0/500.0);
 
+    // stałe dotyczące tekstu
     public static final int TEXT_WIDTH = 160;
     public static final int TEXT_HEIGHT = 80;
     public static final int NUMBER_OFFSET_X= 100;

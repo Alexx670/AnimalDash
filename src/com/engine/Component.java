@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 /**
  * Klasa abstrakcyjna, po której dziedziczyć będą własności obiektów GameObject.
  * Może być dołączony do dowolnego obiektu gry.
- * @param <T> parametr służący do wyszukania klasy po nazwie
+ * @param <T> parametr potrzebny do umożliwienia wyszukania po nazwie klasy dziedziczącej po tej klasie
  */
 public abstract class Component<T> {
     public GameObject gameObject;   // obiekt gry, do którego przypisany jest dany Component

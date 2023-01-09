@@ -1,8 +1,5 @@
 package com.engine;
 
-
-import com.utillity.Time;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -10,7 +7,7 @@ import java.io.File;
 
 /**
  * Klasa odpowiedzialna za odtwarzanie muzyki w tle.
- * Implementuje Runnable
+ * Implementuje Runnable.
  */
 public class Music implements Runnable {
     String musicFilePath;   // ścieżka do pliku z dźwiękiem
@@ -25,19 +22,23 @@ public class Music implements Runnable {
 
     /**
      * Metoda odpowiedzialna za odtwarzanie muzyki
-     * @param file
+     * @param file ścieżka do pliku z dźwiękiem
      */
     public void playMusic(String file) {
+        // spróbuj otworzyć plik z muzyką i ją uruchomić
         try {
-            File musicFile = new File(file);
+            File musicFile = new File(file);    // plik ościeżce podanej do metody
 
+            // jeśli taki plik istnieje
             if (musicFile.exists()) {
+                // utwórz z pliku strumień wejściowy audio
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(musicFile);
                 Clip clip = AudioSystem.getClip();
-                clip.open(audioInputStream);
-                clip.start();
-                clip.loop(Clip.LOOP_CONTINUOUSLY);
+                clip.open(audioInputStream);    // otworzenie strumienia z muzyką
+                clip.start();   // rozpoczęcie odtwarzania
+                clip.loop(Clip.LOOP_CONTINUOUSLY);  // zapętlanie muzyki
             } else {
+                // w przeciwnym wypadku - informacja że nie znaleziono pliku
                 System.out.println("File not found");
             }
         } catch (Exception e) {
@@ -48,6 +49,7 @@ public class Music implements Runnable {
 
     @Override
     public void run() {
+        // po uruchomieniu zacznij grać muzykę
         playMusic(musicFilePath);
     }
 }

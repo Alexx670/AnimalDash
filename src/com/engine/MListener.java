@@ -5,40 +5,56 @@ import com.utillity.Vector2;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
+/**
+ * Klasa odpowiedzialna za śledzenie ruchu myszki oraz kliknięcka jej lewego przycisku.
+ * Dziedziczy po klasie MouseAdapter
+ */
 public class MListener extends MouseAdapter {
 
     private Vector2 mousePosition;  // aktualna pozycja myszy
-    //private Vector2 deltaMousePosition;
     private boolean mouseButton;    // czy naciskany jest  lewy przycisk myszy
 
-    /*
-    MListener() {
-        mousePosition = new Vector2(0.0f, 0.0f);
-        mouseButton = false;
-    }
+    /**
+     * Metoda służąca do uzyskania aktualnej pozycji myszy.
+     * @return aktualna pozycja myszy
      */
-
-
     public Vector2 getMousePosition() {
         return new Vector2(mousePosition.x, mousePosition.y);
     }
 
+    /**
+     * Metoda służąca do uzyskania informacji o stanie naciśnięcia lewego przycisku myszy.
+     * @return stan naciśnięcia lewego przycisku myszy
+     */
     public boolean getMouseButton() {
         return this.mouseButton;
     }
 
+    /**
+     * Metoda służąca do ustawienia stanu naciśnięcia lewego przycisku myszy.
+     * Przydatna do unikania podwójnych kliknięć.
+     * @return przypisywany stan naciśnięcia lewego przycisku myszy
+     */
     public void setMouseButton(boolean pressed) {
         this.mouseButton = pressed;
     }
 
+    /**
+     * Nadpisana metoda z klasy MouseAdapter.
+     * Sledzi pozycję myszy i zapisuje ją na stosownych polach.
+     * @param e zdarzenie myszy
+     */
     @Override
     public void mouseMoved(MouseEvent e) {
-        //this.deltaMousePosition = new Vector2((e.getX() - mousePosition.x), (e.getY() - mousePosition.y));
         this.mousePosition = new Vector2(e.getX(), e.getY());
     }
 
+    /**
+     * Nadpisana metoda z klasy MouseAdapter.
+     * Reaguje na niaciśnięcie lewego przycisku myszy i zapisuje jego stan.
+     * @param e zdarzenie myszy
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         if (SwingUtilities.isLeftMouseButton(e)) {
@@ -46,6 +62,11 @@ public class MListener extends MouseAdapter {
         }
     }
 
+    /**
+     * Nadpisana metoda z klasy MouseAdapter.
+     * Reaguje na puszczenie lewego przycisku myszy i zapisuje jego stan.
+     * @param e zdarzenie myszy
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         if (SwingUtilities.isLeftMouseButton(e)) {

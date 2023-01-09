@@ -15,7 +15,7 @@ public class StartScene extends Scene{
 
     private Image playImage;     // napis "Graj!"
     private Image exitImage;     // napis "Wyjdź"
-    private Image backgroundImage;
+    private Image backgroundImage;  // grafika tła gry
 
     /**
      * Konstruktor ustawiający początkowe parametry menu startowego
@@ -28,7 +28,9 @@ public class StartScene extends Scene{
         backgroundImage = Assets.getImage("assets/background.png").copy();
     }
 
-    // inicjalizacja sceny menu startowego
+    /**
+     *  Inicjalizacja sceny menu startowego.
+     */
     public void init() {
         // dodanie tła
         GameObject backgroundGameObject = new GameObject("Start Background",
@@ -49,7 +51,10 @@ public class StartScene extends Scene{
         addGameObject(exitGameObject);
     }
 
-    // metoda odświeżająca obraz menu startowego
+    /**
+     * Metoda odświeżająca obraz menu startowego.
+     * @param dt czas między wywołaniami metody
+     */
     @Override
     public void update(double dt) {
         Window currentWindow = Window.getWindow();
@@ -81,7 +86,10 @@ public class StartScene extends Scene{
         //Window.getWindow().changeScene(1);
     }
 
-    // metod rysująca menu startowe
+    /**
+     * Metoda rysująca menu startowe.
+     * @param g2 grafika okna
+     */
     @Override
     public void draw(Graphics2D g2) {
         rendering.render(g2);
